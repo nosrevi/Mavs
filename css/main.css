@@ -50,3 +50,7 @@ section {
 .orange {
 	background-color: #ea6300;
 }
+#start {
+  background-image: url("../img/dallas-skyline.jpg");
+  background-size: cover;
+}
