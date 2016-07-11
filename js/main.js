@@ -7,7 +7,6 @@ var controller = new ScrollMagic.Controller({
   }
 });
 
-
 /*
 scene_object = {
   '[scene-name]' : {
@@ -15,18 +14,26 @@ scene_object = {
   }
 }
 */
+
+var tween = TweenMax.to('#start h1', 1, {
+    transform: 'translateY(10px) scale(2)',
+  });
+
 var scenes = {
   'intro': {
     'intro': 'intro-anchor'
   },
   'scene2': {
-    'section-1': 'anchor1'
-  },
-  'scene3': {
-    'section-2': 'anchor2'
-  },
-  'scene4': {
-    'section-3': 'anchor3'
+    'anchor': 's1617',
+    'tweens': [
+      tween
+    ]
+  // },
+  // 'scene3': {
+  //   'section-2': 'anchor2'
+  // },
+  // 'scene4': {
+  //   'section-3': 'anchor3'
   }
 }
 
@@ -36,15 +43,15 @@ for(var key in scenes) {
 
   var obj = scenes[key];
 
-  for (var prop in obj) {
+  // for (var prop in obj) {
     // skip loop if the property is from prototype
-    if(!obj.hasOwnProperty(prop)) continue;
-
-    new ScrollMagic.Scene({ triggerElement: '#'+prop })
-        .setClassToggle('#'+obj[prop], 'active')
-        .addIndicators()
-        .addTo(controller);
-  }
+  // if(!obj.hasOwnProperty(prop)) continue;
+  new ScrollMagic.Scene({ triggerElement: '#'+obj['anchor']})
+      .setClassToggle('#'+obj['anchor'], 'active')
+      .setTween(obj['tweens'][0])
+      .addIndicators()
+      .addTo(controller);
+  // }
 }
 
 

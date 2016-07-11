@@ -39,6 +39,7 @@ section {
 
 .full-screen {
   height: 100%; /* makes panels the entire window height */
+  background-size: cover;
 }
 
 .blue {
@@ -52,5 +53,7 @@ section {
 }
 #start {
   background-image: url("../img/dallas-skyline.jpg");
-  background-size: cover;
+}
+#s1617 {
+  background-image: url("../img/dallas-strong.jpg");
 }
