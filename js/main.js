@@ -15,26 +15,42 @@ scene_object = {
 }
 */
 
-var tween = TweenMax.to('#start h1', 1, {
-    transform: 'translateY(10px) scale(2)',
-  });
+// var tween = TweenMax.to('#start h1', 1, {
+//     transform: 'translateY(10px) scale(2)',
+//   });
+var mavsIntro = new TimelineMax();
+mavsIntro
+// .from('#pin1', 1, {yPercent: 50,xPercent:100,ease:Power4.easeInOut})
+.to('#pin1', 0.5, {opacity: 0.5, rotationX:90, scale: 5, ease: Power4.easeOut});
+
+new ScrollMagic.Scene({
+		duration: '70%'
+	})
+	.setTween(mavsIntro)
+	.triggerElement('#start')
+  .addIndicators()
+	.addTo(controller);
 
 var scenes = {
-  'intro': {
-    'intro': 'intro-anchor'
-  },
-  'scene2': {
-    'anchor': 's1617',
-    'tweens': [
-      tween
-    ]
+  // 'intro': {
+  //   'anchor': '#start',
+    // 'tweens': [
+    //   tween
+    // ],
+  // },
+  // 'scene2': {
+  //   'anchor': '#s1617',
   // },
   // 'scene3': {
   //   'section-2': 'anchor2'
   // },
   // 'scene4': {
   //   'section-3': 'anchor3'
-  }
+  // },
+  // 'scene3': {
+  //   'pin': '#pin1'
+  // }
+
 }
 
 for(var key in scenes) {
@@ -45,12 +61,25 @@ for(var key in scenes) {
 
   // for (var prop in obj) {
     // skip loop if the property is from prototype
-  // if(!obj.hasOwnProperty(prop)) continue;
-  new ScrollMagic.Scene({ triggerElement: '#'+obj['anchor']})
-      .setClassToggle('#'+obj['anchor'], 'active')
-      .setTween(obj['tweens'][0])
-      .addIndicators()
-      .addTo(controller);
+  if (obj.hasOwnProperty('anchor')) {
+    new ScrollMagic.Scene({ triggerElement: obj['anchor']})
+        .setClassToggle('#'+obj['anchor'], 'active')
+        // .setTween(obj['tweens'][0])
+        .addIndicators()
+        .addTo(controller);
+  } else if (obj.hasOwnProperty('pin')) {
+    new ScrollMagic.Scene({
+      triggerElement: '#pin1',
+      // triggerElement: obj['pin'],
+      duration: $(window).height() - 200,
+      triggerHook: 0,
+      reverse: true
+    })
+    .setPin('#pin1')
+    .addIndicators()
+    .addTo(controller);
+  }
+
   // }
 }
 

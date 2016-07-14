@@ -57,3 +57,13 @@ section {
 #s1617 {
   background-image: url("../img/dallas-strong.jpg");
 }
+section .inner {
+  margin: 0 auto;
+  max-width: 85%;
+}
+h1 {
+  /*padding: 50% 0 0 0;*/
+  text-align: center;
+  font-size: 36px;
+  position: relative;
+}
