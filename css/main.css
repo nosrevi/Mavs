@@ -27,8 +27,16 @@ header {
   position: fixed;
   top: 10px;
   left: 10px;
+  z-index: 10;
 }
 
+#roster {
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  z-index: 10;
+  color: white;
+}
 section {
   display: flex;
   justify-content: center;
@@ -45,17 +53,19 @@ section {
 .blue {
 	background-color: #3883d8;
 }
-.red {
-	background-color: #cf3535;
-}
-.orange {
-	background-color: #ea6300;
-}
+
 #start {
   background-image: url("../img/dallas-skyline.jpg");
 }
 #s1617 {
+  /*background-image: url("../img/dallas-strong.jpg");*/
+  width: 200%;
+}
+#s1617-1 {
   background-image: url("../img/dallas-strong.jpg");
+}
+#s1617-2 {
+  background-image: url("../img/hbarnes.jpg");
 }
 section .inner {
   margin: 0 auto;
@@ -66,4 +76,9 @@ h1 {
   text-align: center;
   font-size: 36px;
   position: relative;
+}
+.floater {
+  height: 100%;
+  width: 50%;
+  float: left;
 }

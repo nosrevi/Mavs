@@ -2,7 +2,7 @@ $(function() {// Init controller
 var controller = new ScrollMagic.Controller({
   globalSceneOptions: {
     duration: $('section').height(),
-    triggerHook: .025,
+    triggerHook: 0,
     reverse: true
   }
 });
@@ -82,6 +82,22 @@ for(var key in scenes) {
 
   // }
 }
+
+// define movement of panels
+var wipeAnimation = new TimelineMax()
+	.fromTo("#s1617", 1, {x: "0%"}, {x: "-50%", ease: Linear.easeNone});
+// 	.fromTo("section.red",    1, {x:  "100%"}, {x: "0%", ease: Linear.easeNone})
+// 	.fromTo("section.blue", 1, {y: "-100%"}, {y: "0%", ease: Linear.easeNone});
+//
+new ScrollMagic.Scene({
+				triggerElement: "#s1617",
+				triggerHook: "onLeave",
+				duration: "200%"
+			})
+			.setPin("#s1617")
+			.setTween(wipeAnimation)
+			.addIndicators()
+			.addTo(controller);
 
 
 // Change behaviour of controller
