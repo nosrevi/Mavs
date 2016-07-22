@@ -20,14 +20,26 @@ scene_object = {
 //   });
 var mavsIntro = new TimelineMax();
 mavsIntro
-// .from('#pin1', 1, {yPercent: 50,xPercent:100,ease:Power4.easeInOut})
 .to('#pin1', 0.5, {opacity: 0.5, rotationX:90, scale: 5, ease: Power4.easeOut});
+
+var rosterIntro = new TimelineMax();
+rosterIntro
+.from('#roster', 1, {opacity: 0, ease:Power4.easeInOut});
 
 new ScrollMagic.Scene({
 		duration: '70%'
 	})
 	.setTween(mavsIntro)
 	.triggerElement('#start')
+  .addIndicators()
+	.addTo(controller);
+
+new ScrollMagic.Scene({
+		duration: '30%',
+    reverse: true
+	})
+	.setTween(rosterIntro)
+	.triggerElement('#pin1')
   .addIndicators()
 	.addTo(controller);
 
